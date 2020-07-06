@@ -18,7 +18,7 @@ export default function makeCompanyDa({connection}){
         const con = await connection();
         
         return new Promise((resolve, reject) => {
-            con.query('SELECT * FROM societe', function(error, results, fields){
+            con.query('SELECT * FROM societe_view', function(error, results, fields){
                 if(error) reject(error)
 
                 resolve(results);
@@ -30,7 +30,7 @@ export default function makeCompanyDa({connection}){
         const con = await connection();
         
         return new Promise((resolve, reject) => {
-            con.query('SELECT * FROM societe WHERE `label` = ? ', [label] , function(error, results, fields){
+            con.query('SELECT * FROM societe_view WHERE `nom_societe` = ? ', [label] , function(error, results, fields){
                 if(error) reject(error)
 
                 resolve(results);
@@ -42,7 +42,7 @@ export default function makeCompanyDa({connection}){
         const con = await connection();
         
         return new Promise((resolve, reject) => {
-            con.query('SELECT * FROM societe WHERE `id` = ? ', [id] , function(error, results, fields){
+            con.query('SELECT * FROM societe_view WHERE `id` = ? ', [id] , function(error, results, fields){
                 if(error) reject(error)
 
                 resolve(results);

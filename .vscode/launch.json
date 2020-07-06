@@ -19,7 +19,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/test/helpers/buildSqlRequest.spec.js"
+                "${workspaceFolder}/test/data-access/company.spec.js"
             ],
             // "console": "integratedTerminal",
             "internalConsoleOptions": "openOnSessionStart",
