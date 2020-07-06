@@ -21,6 +21,8 @@ describe("Company data access", function() {
     })
 
     it('get custom', () => {
-
+        const req = {
+            fields: []
+        }
     })
 })
