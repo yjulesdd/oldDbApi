@@ -6,7 +6,7 @@ import makeFactureDa from './facture/facture-da';
 const companyDataAccess = makeCompanyDa({connection});
 const factureDataAccess = makeFactureDa({connection})
 
-debugger
+
 
 
 
