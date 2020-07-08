@@ -1,72 +1,92 @@
 
+export default function factureDa({connection, buildSqlRequest, executeSqlrequest}){
 
-export default function factureDa({connection}){
+    async function findClientFactures(request){
 
-    async function findAll(){
         const con = await connection();
+        const { request: sql, values} = buildSqlRequest(request, 'facture_client_view');
+        return await executeSqlrequest({con ,sql, values});
         
-        return new Promise((resolve, reject) => {
-            con.query('SELECT * FROM facture', function(error, results, fields){
-                if(error) reject(error)
-
-                resolve(results);
-            })
-        })
     }
 
-    async function findByYear(year){
-        const con = await connection();
-        
-        return new Promise((resolve, reject) => {
-            con.query('SELECT * FROM facture WHERE `annee` = ? ', [year] , function(error, results, fields){
-                if(error) reject(error)
+    async function findClientFacturesInProgress(request){
 
-                resolve(results);
-            })
-        })
+        const con = await connection();
+        const { request: sql, values} = buildSqlRequest(request, 'facture_client_paiement_en_cours_view');
+        return await executeSqlrequest({con ,sql, values});
+        
     }
 
-    async function findSum(period){
-        const con = await connection();
-        
-        return new Promise((resolve, reject) => {
-            con.query('SELECT SUM (montant) FROM facture WHERE `annee` = ? ', [year] , function(error, results, fields){
-                if(error) reject(error)
+    async function findClientFacturesDone(request){
 
-                resolve(results);
-            })
-        })
+        const con = await connection();
+        const { request: sql, values} = buildSqlRequest(request, 'facture_client_paiement_termine_view');
+        return await executeSqlrequest({con ,sql, values});
+        
     }
 
-    async function findByMonth(month){
-        const con = await connection();
-        
-        return new Promise((resolve, reject) => {
-            con.query('SELECT * FROM facture WHERE `mois` = ? ', [month] , function(error, results, fields){
-                if(error) reject(error)
+    async function findClientFacturesNeverPaid(request){
 
-                resolve(results);
-            })
-        })
+        const con = await connection();
+        const { request: sql, values} = buildSqlRequest(request, 'facture_client_sans_paiement_view');
+        return await executeSqlrequest({con ,sql, values});
+        
     }
 
-    async function findById(id){
-        const con = await connection();
-        
-        return new Promise((resolve, reject) => {
-            con.query('SELECT * FROM facture WHERE `id` = ? ', [id] , function(error, results, fields){
-                if(error) reject(error)
 
-                resolve(results);
-            })
-        })
+
+    async function findFournisseurExterneFactures(request){
+
+        const con = await connection();
+        const { request: sql, values} = buildSqlRequest(request, 'facture_fournisseur_view');
+        return await executeSqlrequest({con ,sql, values});
+        
     }
+
+    async function findFournisseurInterneFactures(request){
+
+        const con = await connection();
+        const { request: sql, values} = buildSqlRequest(request, 'facture_interne_view');
+        return await executeSqlrequest({con ,sql, values});
+        
+    }
+
+    async function findFournisseurExterneFacturesInProgress(request){
+
+        const con = await connection();
+        const { request: sql, values} = buildSqlRequest(request, 'facture_fournisseur_paiement_en_cours_view');
+        return await executeSqlrequest({con ,sql, values});
+        
+    }
+
+    async function findFournisseurExterneFacturesNeverPaid(request){
+
+        const con = await connection();
+        const { request: sql, values} = buildSqlRequest(request, 'facture_fournisseur_sans_paiement_view');
+        return await executeSqlrequest({con ,sql, values});
+        
+    }
+
+    async function findFournisseurExterneFacturesDone(request){
+
+        const con = await connection();
+        const { request: sql, values} = buildSqlRequest(request, 'facture_fournisseur_paiement_termine_view');
+        return await executeSqlrequest({con ,sql, values});
+        
+    }
+
+   
 
 
     return Object.freeze({
-        findAll,
-        findByYear,
-        findByMonth,
-        findById
+        findClientFactures,
+        findClientFacturesDone,
+        findClientFacturesInProgress,
+        findClientFacturesNeverPaid,
+        findFournisseurExterneFactures,
+        findFournisseurExterneFacturesDone,
+        findFournisseurExterneFacturesInProgress,
+        findFournisseurExterneFacturesNeverPaid,
+        findFournisseurInterneFactures
     })
 }

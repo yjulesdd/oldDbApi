@@ -2,7 +2,8 @@ const companyController = require('./companyControllers')
 
 
 const gatewayController = Object.freeze({
-    ...companyController
+    // ...companyController
+    ...factureController
 });
 
 

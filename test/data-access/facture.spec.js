@@ -23,10 +23,9 @@ describe("Facture data access", function() {
         const req = {
             filters:{
                 where:{
-                    nom : 'Sidibe',
                     date:{
 
-                        name: 'date_emission',
+                        name: 'annee',
                         start: '2020',
                         end: '2020'
                         
@@ -34,6 +33,8 @@ describe("Facture data access", function() {
                 }
             }
         }
-        buildSqlRequest(req);
+        
+        const findAll = await factureDataAccess.findAll(req);
+        debugger
     })
 })

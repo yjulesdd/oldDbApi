@@ -1,7 +1,10 @@
-import { date } from "faker";
 
 
-function buildSqlRequest({ fields = [], filters = {} } = {}){
+function buildSqlRequest({ fields = [], filters = {} } = {}, tableName = null){
+
+    if(!tableName){
+        throw('Il faut un nom de la table dans laquelle chercher l\'information');
+    }
 
     const champs = fields.length > 0 ? fields : ['* '];
     const filter = filters;
@@ -9,10 +12,11 @@ function buildSqlRequest({ fields = [], filters = {} } = {}){
     
 
     let request = '';
-    let secondPArt = '';
 
     request += 'SELECT ';
     request += champs.join(',');
+    request += ' FROM ';
+    request += tableName
 
 
     for(let j in filter){
@@ -31,6 +35,11 @@ function buildSqlRequest({ fields = [], filters = {} } = {}){
                 if(el === 'date'){
                    
                     request += '(' + filter[j][el].name + ' BETWEEN "' + filter[j][el].start + '"  AND  "' + filter[j][el].end +'" )'
+                
+                }else if(Array.isArray(filter[j][el])){
+
+                    request += '`'+el+'` IN (' + filter[j][el].map(d => `'${d}'`).join(",") + ')';
+
                 }else{
 
                     request += '`'+el+'` = ?';
@@ -55,10 +64,29 @@ function buildSqlRequest({ fields = [], filters = {} } = {}){
         
     }
 
-    debugger
-
-
     return { request , values}
 }
 
-export { buildSqlRequest}
+async function executeSqlrequest({con, sql, values}){
+    if(!sql){
+        throw('Vous devez nous soummettre une requête sql');
+    }
+
+    return new Promise((resolve, reject) => {
+        con.query(
+            {
+                sql,
+                values
+            },
+            function(error, results, fields){
+            if(error){
+                reject(error);
+                debugger
+            }
+            resolve(results);
+        })
+    })
+}
+
+
+export { buildSqlRequest, executeSqlrequest}
