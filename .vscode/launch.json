@@ -19,7 +19,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/test/data-access/facture/findClientFactures.spec.js"
+                "${workspaceFolder}/test/use-cases/companyUseCases/getCompanies.spec.js"
             ],
             // "console": "integratedTerminal",
             "internalConsoleOptions": "openOnSessionStart",

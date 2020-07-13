@@ -4,18 +4,18 @@ import makeFactureDa from './facture/facture-da';
 
 import { buildSqlRequest, executeSqlrequest } from '../helpers';
 
-const companyDataAccess = makeCompanyDa({connection});
+const companyDataAccess = makeCompanyDa({connection, buildSqlRequest, executeSqlrequest});
 const factureDataAccess = makeFactureDa({connection, buildSqlRequest, executeSqlrequest})
 
 
+const dataAccess = Object.freeze({
+    ...companyDataAccess,
+    ...factureDataAccess
+})
 
 
+export default dataAccess;
 
-export default{
-    companyDataAccess,
-    factureDataAccess
-}
-
-export{ companyDataAccess, factureDataAccess }
+export { companyDataAccess, factureDataAccess }
 
 

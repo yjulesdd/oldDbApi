@@ -29,16 +29,19 @@ function buildSqlRequest({ fields = [], filters = {} } = {}, tableName = null){
             
             filterKeys.map(el => {
 
-                if(filterKeys[0] != el){
+                if(filterKeys[0] != el && filter[j][el].length > 0){
                     request += ' AND '
                 }
                 if(el === 'date'){
                    
                     request += '(' + filter[j][el].name + ' BETWEEN "' + filter[j][el].start + '"  AND  "' + filter[j][el].end +'" )'
                 
-                }else if(Array.isArray(filter[j][el])){
+                }else if(Array.isArray(filter[j][el]) ){
 
-                    request += '`'+el+'` IN (' + filter[j][el].map(d => `'${d}'`).join(",") + ')';
+                    if(filter[j][el].length > 0){
+
+                        request += '`'+el+'` IN (' + filter[j][el].map(d => `'${d}'`).join(",") + ')';
+                    }
 
                 }else{
 
