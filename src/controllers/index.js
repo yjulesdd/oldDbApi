@@ -1,13 +1,12 @@
-const companyController = require('./companyControllers')
+import companyControllers from './companyControllers';
 
 
 const gatewayController = Object.freeze({
-    // ...companyController
-    ...factureController
+    ...companyControllers
 });
 
 
 export default gatewayController;
 export {
-    serviceControllers
+    companyControllers
 }

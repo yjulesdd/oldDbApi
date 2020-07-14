@@ -6,6 +6,7 @@ export default function makeCompanyDa({connection, buildSqlRequest, executeSqlre
         const con = await connection();
 
         const { request: sql, values} = buildSqlRequest(request, 'societe_view');
+        debugger
         return await executeSqlrequest({con ,sql, values});
     }
 

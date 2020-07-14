@@ -1,7 +1,13 @@
-import  makeGetCompnanies from './getCompanies';
+import  makeGetCompanies from './getCompanies';
+import { companyUseCases }  from '../../use-cases'
+
+const { listCompanies } = companyUseCases;
+const getCompanies = makeGetCompanies({listCompanies});
+
+const companyControllers = Object.freeze({
+    getCompanies
+});
 
 
-import  {listCompanies} from '../../use-cases'
-
-
-const getCompanies = makeGetCompnanies({listCompanies});
+export default companyControllers;
+export { getCompanies };

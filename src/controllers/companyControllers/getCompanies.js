@@ -4,8 +4,10 @@ export default function makeGetCompnanies({listCompanies}){
             'Content-Type':'application/json',
         }
 
+        const { fields = {} , filters = {} } = httpRequest.query;
+
         try{
-            const service = await listCompanies();
+            const service = await listCompanies({fields, filters});
 
             return{
                 headers,
