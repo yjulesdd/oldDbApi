@@ -1,12 +1,12 @@
 
 
-function buildSqlRequest({ fields = [], filters = {} } = {}, tableName = null){
+function buildSqlRequest({ fields = [], filters = {} } , tableName = null){
 
     if(!tableName){
         throw('Il faut un nom de la table dans laquelle chercher l\'information');
     }
 
-    const champs = fields.length > 0 ? fields : ['* '];
+    const champs = Array.isArray(fields) && fields.length > 0 || !(Object.keys(fields).length === 0 && fields.constructor === Object) ? fields : ['* '];
     const filter = filters;
     const values= [];
     
@@ -71,6 +71,7 @@ function buildSqlRequest({ fields = [], filters = {} } = {}, tableName = null){
 }
 
 async function executeSqlrequest({con, sql, values}){
+    
     if(!sql){
         throw('Vous devez nous soummettre une requête sql');
     }

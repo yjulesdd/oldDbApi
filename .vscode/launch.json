@@ -19,7 +19,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/test/controllers/companyControllers/getCompanies.spec.js"
+                "${workspaceFolder}/test/controllers/factureControllers/*.spec.js"
             ],
             // "console": "integratedTerminal",
             "internalConsoleOptions": "openOnSessionStart",

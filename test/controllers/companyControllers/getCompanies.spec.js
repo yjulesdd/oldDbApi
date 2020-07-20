@@ -1,4 +1,5 @@
 import { companyControllers } from "../../../src/controllers";
+import { assert } from 'chai';
 
 describe('get companies controller', () => {
     it('successfully get all companies', async () => {
@@ -7,16 +8,56 @@ describe('get companies controller', () => {
                 ContentType: "application/json"
             },
             query:{
-                filters:{
-                    where:{
-                        nom_societe : 'X-COBAT'
-                    }
+                
+                user:{
+                    idsociete: [4]
                 }
             }
         }
 
         const res = await companyControllers.getCompanies(req);
-        debugger
+        assert.isArray(res.body.data);
+
+    });
+
+    it('successfully get one company by id', async () => {
+        const req = {
+            headers: {
+                ContentType: "application/json"
+            },
+            query:{
+                filters:{
+                    where:{
+                        idsociete : [11]
+                    }
+                },
+                
+                user:{
+                    idsociete: [4]
+                }
+            }
+        }
+
+        const res = await companyControllers.getCompanies(req);
+        
+        assert.isArray(res.body.data);
+
+    });
+
+    it('successfully get companies by id', async () => {
+        const req = {
+            headers: {
+                ContentType: "application/json"
+            },
+            query:{
+                user:{
+                    idsociete: [4, 7]
+                }
+            }
+        }
+
+        const res = await companyControllers.getCompanies(req);
+        assert.isArray(res.body.data);
 
     })
 

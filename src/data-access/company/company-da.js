@@ -6,13 +6,20 @@ export default function makeCompanyDa({connection, buildSqlRequest, executeSqlre
         const con = await connection();
 
         const { request: sql, values} = buildSqlRequest(request, 'societe_view');
-        debugger
+
         return await executeSqlrequest({con ,sql, values});
     }
 
-    
+    async function findOne(request){
+        const con = await connection();
+        
+        const { request: sql, values} = buildSqlRequest(request, 'societe_view');
+
+        return await executeSqlrequest({con ,sql, values});
+    }
 
     return Object.freeze({
-        find
+        find,
+        findOne
     })
 }

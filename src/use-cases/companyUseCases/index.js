@@ -1,16 +1,20 @@
 import {companyDataAccess} from '../../data-access';
 
 import makeListCompanies from './listCompanies';
+import makeListCompany from './listCompany'
 
 
-const {find} = companyDataAccess;
+const {find, findOne} = companyDataAccess;
 
 const listCompanies = makeListCompanies({find});
+const listCompany = makeListCompany({findOne});
 
 export default {
-    listCompanies
+    listCompanies,
+    listCompany
 }
 
 export{
-    listCompanies
+    listCompanies,
+    listCompany
 }
