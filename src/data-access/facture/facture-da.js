@@ -5,6 +5,7 @@ export default function factureDa({connection, buildSqlRequest, executeSqlreques
 
         const con = await connection();
         const { request: sql, values} = buildSqlRequest(request, 'facture_client_view');
+        
         return await executeSqlrequest({con ,sql, values});
         
     }

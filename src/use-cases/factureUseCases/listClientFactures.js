@@ -1,35 +1,29 @@
 export default function makeListClientFactures({factureDataAccess, listCompanies}){
     return async function listClientFactures({fields = [], filters = {}}){
-    //    if(!userInfo){
-    //        throw new Error('Vous devez vous authentifier');
-    //    }
 
-    if(!filters.user){
-        throw new Error(" Veuillez vous authentifier ")
-    }
+        const companies = await listCompanies({fields: ['nom_societe'] , filters:{ where:{ idsociete : filters.where.idsociete } }});
 
-    const companies = await listCompanies({filters:{ where :{ idsociete : filters.user.idsociete} }});
+        if(companies.length <= 0){
+            return [];
+        }
 
-    if(companies.length <= 0){
-        return [];
-    }
+        const companiesNames  = [];
+            
+        companies.forEach(element => {
+            companiesNames.push(element.nom_societe.replace("'", "\\'"));
+        });
 
 
-    const companiesNames  = [];
-    
-    companies.forEach(element => {
-        companiesNames.push(element.nom_societe.replace("'", "\\'"));
-    });
 
-    
- 
-    if(! filters.where){
-        filters.where = {};
-    }
+        if(! filters.where){
+            filters.where = {};
+        }
 
-    filters.where.nom_entreprise = companiesNames;
+            delete filters.where.idsociete;
+            filters.where.nom_entreprise = companiesNames;
 
-        const res = await factureDataAccess.findClientFactures({ fields, filters });
-        return res;
+            const res = await factureDataAccess.findClientFactures({ fields, filters });
+
+            return res;
     }
 }

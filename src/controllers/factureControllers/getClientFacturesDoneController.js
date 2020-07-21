@@ -1,7 +1,8 @@
-export default function makeGetClientFactureController({listClientFactures , userExist , foundCompanyIdAuthorized}){
-    return async function getClientFactureController(httpRequest){
-        
+export default function makeGetClientFacturesDoneController({listClientFacturesDone, userExist, foundCompanyIdAuthorized}){
+    return async function getClientFacturesDoneController(httpRequest){
         try{
+
+           
             const { fields = {} , filters = {}, user} = httpRequest.query;
           
             userExist({user});
@@ -22,9 +23,9 @@ export default function makeGetClientFactureController({listClientFactures , use
 
 
             
-
             
-            const data = await listClientFactures({fields, filters});
+            
+            const data = await listClientFacturesDone({fields, filters});
 
             return{
                 headers,

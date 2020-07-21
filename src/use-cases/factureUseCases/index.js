@@ -12,7 +12,7 @@ import makeListClientFactureDone from './listCLientFactureDone';
 import makeListFournisseurInterneFactures from './listFournisseurInterneFactures';
 
 const listClientFactures  = makeListClientFactures({ factureDataAccess , listCompanies});
-const listClientFacturesInProgress = makeListClientFactures({ factureDataAccess, listCompanies});
+const listClientFacturesInProgress = makeListClientFacturesInProgress({ factureDataAccess, listCompanies});
 const listClientFacturesNeverPaid = makeListClientFacturesNeverPaid({ factureDataAccess, listCompanies });
 const listClientFacturesDone = makeListClientFactureDone({ factureDataAccess, listCompanies });
 
