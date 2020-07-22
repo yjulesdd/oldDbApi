@@ -16,11 +16,13 @@ const getCompany = {
     link:"/company",
     controller: companyControllers.getCompany,
     params:{},
-    accessRightLevel: [],
+    accessRightLevel: [
+        "ADMIN", "COMPTABILITE",
+    ],
     accessRightGroups: []
 }
 
-const getCompanys = {
+const getCompanies = {
     name: "getCompanies",
     method: "get",
     link:"/companies",
@@ -51,16 +53,13 @@ const getCompanys = {
 // }
 
 
-// const companyRouter = {
-//     prefix: "/api/company",
-//     routerName: "companyRouter",
-//     routes:[
-//         addCompany,
-//         getCompany,
-//         getCompanys,
-//         deleteCompany,
-//         updateCompany
-//     ]
-// }
+const companyRouter = {
+    prefix: "/api/company",
+    routerName: "companyRouter",
+    routes:[
+        getCompany,
+        getCompanies,
+    ]
+}
 
 module.exports = companyRouter;

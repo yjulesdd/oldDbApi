@@ -1,8 +1,8 @@
-export default function makeGetClientFacturesNeverPaidController({listClientFacturesNeverPaid, userExist, foundCompanyIdAuthorized}){
-    return async function getClientFacturesNeverPaidController(httpRequest){
+export default function makeGetFournisseurExternesFacturesDoneController({listFournisseurExterneFacturesDone , userExist , foundCompanyIdAuthorized}){
+    return async function getFournisseurExternesFacturesDoneController(httpRequest){
+        
         try{
-
-           
+            
             const { fields = {} , filters = {}, user} = httpRequest.body;
           
             userExist({user});
@@ -23,9 +23,9 @@ export default function makeGetClientFacturesNeverPaidController({listClientFact
 
 
             
+
             
-            
-            const data = await listClientFacturesNeverPaid({fields, filters});
+            const data = await listFournisseurExterneFacturesDone({fields, filters});
 
             return{
                 headers,

@@ -3,7 +3,7 @@ export default function makeGetClientFacturesInProgressController({listClientFac
         try{
 
            
-            const { fields = {} , filters = {}, user} = httpRequest.query;
+            const { fields = {} , filters = {}, user} = httpRequest.body;
           
             userExist({user});
             

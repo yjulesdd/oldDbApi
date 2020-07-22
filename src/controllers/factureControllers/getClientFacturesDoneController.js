@@ -3,7 +3,7 @@ export default function makeGetClientFacturesDoneController({listClientFacturesD
         try{
 
            
-            const { fields = {} , filters = {}, user} = httpRequest.query;
+            const { fields = {} , filters = {}, user} = httpRequest.body;
           
             userExist({user});
             

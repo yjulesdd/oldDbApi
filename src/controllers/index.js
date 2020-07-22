@@ -1,12 +1,15 @@
 import companyControllers from './companyControllers';
+import factureControllers from './factureControllers'
 
 
 const gatewayController = Object.freeze({
-    ...companyControllers
+    ...companyControllers,
+    ...factureControllers
 });
 
 
 export default gatewayController;
 export {
-    companyControllers
+    companyControllers,
+    factureControllers
 }

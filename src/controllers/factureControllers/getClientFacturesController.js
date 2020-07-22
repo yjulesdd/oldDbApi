@@ -2,7 +2,7 @@ export default function makeGetClientFactureController({listClientFactures , use
     return async function getClientFactureController(httpRequest){
         
         try{
-            const { fields = {} , filters = {}, user} = httpRequest.query;
+            const { fields = {} , filters = {}, user} = httpRequest.body;
           
             userExist({user});
             
@@ -17,6 +17,7 @@ export default function makeGetClientFactureController({listClientFactures , use
                 societes = foundCompanyIdAuthorized({user, filters});
                 filters.where.idsociete = societes;
             }else{
+                filters.where = {};
                 filters.where.idsociete = user.idsociete;
             }
 

@@ -4,7 +4,7 @@ export default function makeGetCompany({listCompany, whereExist, userExist, foun
             'Content-Type':'application/json',
         }
 
-        const { fields = {} , filters = {}, user = null } = httpRequest.query;
+        const { fields = {} , filters = {}, user = null } = httpRequest.body;
         
         userExist({ user })
 

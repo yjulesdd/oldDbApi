@@ -1,21 +1,27 @@
 export default function makeGetCompanies({listCompanies, userExist }){
     return async function getCompanies(httpRequest){
-        const headers = {
-            'Content-Type':'application/json',
-        }
-
-        const { fields = {} , filters = {}, user = null } = httpRequest.query;
-        userExist({ user });
-        
-        // Verif if where exist in filters 
-        // if not instanciate it to an empty object
-        if(!filters.where) filters.where = {}
-
-        //add property idsociete in where object to filter exact societe user have access to 
-        filters.where['idsociete'] = user.idsociete ;
-
-
+        debugger
+           
         try{
+    
+            const headers = {
+                'Content-Type':'application/json',
+            }
+    
+            const { fields = {} , filters = {}, user = null } = httpRequest.body;
+
+            debugger
+    
+    
+            userExist({ user});
+            
+            
+            // Verif if where exist in filters 
+            // if not instanciate it to an empty object
+            if(!filters.where) filters.where = {}
+    
+            //add property idsociete in where object to filter exact societe user have access to 
+            filters.where['idsociete'] = user.idsociete ;
             const data = await listCompanies({fields, filters});
 
             return{
@@ -27,6 +33,7 @@ export default function makeGetCompanies({listCompanies, userExist }){
             }
         }catch(e){
             console.log(e);
+            
             return{
                 statusCode: 400,
                 body:{

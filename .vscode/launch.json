@@ -32,7 +32,11 @@
             "request": "launch",
             "name": "nodemon",
             "runtimeExecutable": "nodemon",
-            "program": "${workspaceFolder}/app.js",
+            "program": "${workspaceFolder}/src/index.js",
+            "args": [
+                "--exec",
+                "babel-node"
+            ],
             "restart": true,
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",

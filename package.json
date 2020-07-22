@@ -24,7 +24,8 @@
     "mongoose": "^5.9.25",
     "mysql": "^2.18.1",
     "nyc": "^15.1.0",
-    "regenerator-runtime": "^0.13.5"
+    "regenerator-runtime": "^0.13.5",
+    "save": "^2.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
