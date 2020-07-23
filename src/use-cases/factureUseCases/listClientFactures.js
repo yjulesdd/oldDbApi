@@ -13,6 +13,7 @@ export default function makeListClientFactures({factureDataAccess, listCompanies
             companiesNames.push(element.nom_societe.replace("'", "\\'"));
         });
 
+        debugger
 
 
         if(! filters.where){
@@ -24,6 +25,7 @@ export default function makeListClientFactures({factureDataAccess, listCompanies
 
             const res = await factureDataAccess.findClientFactures({ fields, filters });
 
+            
             return res;
     }
 }
