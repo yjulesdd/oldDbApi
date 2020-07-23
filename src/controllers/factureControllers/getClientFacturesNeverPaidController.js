@@ -18,6 +18,8 @@ export default function makeGetClientFacturesNeverPaidController({listClientFact
                 societes = foundCompanyIdAuthorized({user, filters});
                 filters.where.idsociete = societes;
             }else{
+
+                filters.where = {};
                 filters.where.idsociete = user.idsociete;
             }
 

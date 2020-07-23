@@ -4,6 +4,8 @@ export default function makeGetClientFacturesInProgressController({listClientFac
 
            
             const { fields = {} , filters = {}, user} = httpRequest.body;
+
+            debugger
           
             userExist({user});
             
@@ -18,6 +20,8 @@ export default function makeGetClientFacturesInProgressController({listClientFac
                 societes = foundCompanyIdAuthorized({user, filters});
                 filters.where.idsociete = societes;
             }else{
+                
+                filters.where = {};
                 filters.where.idsociete = user.idsociete;
             }
 

@@ -18,6 +18,8 @@ export default function makeGetFournisseurExternesFacturesNeverPaidController({l
                 societes = foundCompanyIdAuthorized({user, filters});
                 filters.where.idsociete = societes;
             }else{
+
+                filters.where = {};
                 filters.where.idsociete = user.idsociete;
             }
 
