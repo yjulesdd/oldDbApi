@@ -76,6 +76,7 @@ export default function factureDa({connection, buildSqlRequest, executeSqlreques
         
     }
 
+
    
 
 
@@ -89,5 +90,6 @@ export default function factureDa({connection, buildSqlRequest, executeSqlreques
         findFournisseurExterneFacturesInProgress,
         findFournisseurExterneFacturesNeverPaid,
         findFournisseurInterneFactures
+        
     })
 }
