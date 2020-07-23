@@ -1,6 +1,8 @@
 export default function makeGetFournisseurInternesFacturesController({listFournisseurInterneFactures , userExist , foundCompanyIdAuthorized}){
     return async function getFournisseurInternesFacturesController(httpRequest){
         
+       
+
         try{
             
             const { fields = {} , filters = {}, user} = httpRequest.body;

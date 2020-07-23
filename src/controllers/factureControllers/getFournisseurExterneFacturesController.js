@@ -1,5 +1,7 @@
 export default function makeGetFournisseurExternesFacturesController({listFournisseurExterneFactures , userExist , foundCompanyIdAuthorized}){
     return async function getFournisseurExternesFacturesController(httpRequest){
+
+        debugger
         
         try{
             
@@ -28,6 +30,8 @@ export default function makeGetFournisseurExternesFacturesController({listFourni
 
             
             const data = await listFournisseurExterneFactures({fields, filters});
+
+            debugger
 
             return{
                 headers,

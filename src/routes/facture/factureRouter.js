@@ -40,40 +40,40 @@ const getClientFacturesNeverPaid = {
 }
 
 
-const getFournisseurFactures = {
-    name: "getFournisseurFactures",
+const getFournisseurExterneFactures = {
+    name: "getFournisseurExterneFactures",
     method: "get",
-    link:"/get-fournisseur-factures",
+    link:"/get-fournisseur-externe-factures",
     controller: factureControllers.getFournisseurExterneFacturesController,
     params:{},
     accessRightLevel: ['ADMIN', 'COMPTABILITE'],
     accessRightGroups: []
 }
 
-const getFournisseurFacturesDone = {
-    name: "getFournisseurFacturesDone",
+const getFournisseurExterneFacturesDone = {
+    name: "getFournisseurExterneFacturesDone",
     method: "get",
-    link:"/get-fournisseur-factures-done",
+    link:"/get-fournisseur-externe-factures-done",
     controller: factureControllers.getFournisseurExterneFacturesDoneController,
     params:{},
     accessRightLevel: ['ADMIN', 'COMPTABILITE'],
     accessRightGroups: []
 }
 
-const getFournisseurFacturesInProgress = {
-    name: "getFournisseurFacturesInProgress",
+const getFournisseurExterneFacturesInProgress = {
+    name: "getFournisseurExterneFacturesInProgress",
     method: "get",
-    link:"/get-fournisseur-factures-in-progress",
+    link:"/get-fournisseur-externe-factures-in-progress",
     controller: factureControllers.getFournisseurExterneFacturesInProgressController,
     params:{},
     accessRightLevel: ['ADMIN', 'COMPTABILITE'],
     accessRightGroups: []
 }
 
-const getFournisseurFacturesNeverPaid = {
-    name: "getFournisseurFacturesNeverPaid",
+const getFournisseurExterneFacturesNeverPaid = {
+    name: "getFournisseurExterneFacturesNeverPaid",
     method: "get",
-    link:"/get-fournisseur-factures-never-paid",
+    link:"/get-fournisseur-externe-factures-never-paid",
     controller: factureControllers.getFournisseurExterneFacturesNeverPaidController,
     params:{},
     accessRightLevel: ['ADMIN', 'COMPTABILITE'],
@@ -98,10 +98,10 @@ const serviceRouter = {
         getClientFacturesDone,
         getClientFacturesInProgress,
         getClientFacturesNeverPaid,
-        getFournisseurFactures,
-        getFournisseurFacturesDone,
-        getFournisseurFacturesInProgress,
-        getFournisseurFacturesNeverPaid,
+        getFournisseurExterneFactures,
+        getFournisseurExterneFacturesDone,
+        getFournisseurExterneFacturesInProgress,
+        getFournisseurExterneFacturesNeverPaid,
         getFournisseurInterneFactures
     ]
 }
