@@ -1,7 +1,7 @@
 
 
-export default function makeGetDbYearsController({ listDbYears , userExist, foundCompanyIdAuthorized}){
-    return async function getDbYearsController(httpRequest){
+export default function makeGetGlobalTurnoverOfYearController({ listGlobalTurnoverOfYear , userExist, foundCompanyIdAuthorized}){
+    return async function getGlobalTurnoverOfYearController(httpRequest){
         try{
             const { fields = {} , filters = {}, user} = httpRequest.body;
           
@@ -27,7 +27,7 @@ export default function makeGetDbYearsController({ listDbYears , userExist, foun
             
     
             
-            const data = await listDbYears({fields, filters});
+            const data = await listGlobalTurnoverOfYear({fields, filters});
     
             return{
                 headers,

@@ -63,6 +63,13 @@ function buildSqlRequest({ fields = [], filters = {} } , tableName = null){
             debugger
             request += filter[j].join(', ');
         }
+        if( j == 'orderBy'){
+            
+            debugger
+            request += ' ORDER BY ';
+            debugger
+            request += filter[j];
+        }
 
         
     }
@@ -92,5 +99,13 @@ async function executeSqlrequest({con, sql, values}){
     })
 }
 
+function sanitizeStringForSqlDb(table){
+    debugger
+    const res = table.map((element) => {           
+        return `'${'\\"'+element.nom_societe+'\\"'}'`
+    });
 
-export { buildSqlRequest, executeSqlrequest}
+    return res.join(',');
+}
+
+export { buildSqlRequest, executeSqlrequest, sanitizeStringForSqlDb}

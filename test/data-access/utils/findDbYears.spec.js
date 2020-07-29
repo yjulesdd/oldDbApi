@@ -12,6 +12,5 @@ describe(' find db years ', function(){
         }
         const res = await utilsDataAccess.findDbYears(request);
 
-        debugger
     })
 })
