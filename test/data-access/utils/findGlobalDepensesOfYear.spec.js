@@ -1,6 +1,6 @@
 import { utilsDataAccess } from '../../../src/data-access'
 
-describe(' findGlobalTurnoverOfYear.spec ', function(){
+describe(' findGlobalDepensesOfYear.spec ', function(){
     it('successfully r', async()=>{
 
         const request = {
@@ -11,7 +11,7 @@ describe(' findGlobalTurnoverOfYear.spec ', function(){
                 }
             }
         }
-        const res = await utilsDataAccess.findGlobalTurnoverOfYear(request);
+        const res = await utilsDataAccess.findGlobalDepensesOfYear(request);
 
         debugger
     })

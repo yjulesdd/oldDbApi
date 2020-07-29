@@ -1,6 +1,6 @@
 import { utilsUseCases } from '../../../src/use-cases';
 
-describe('list db years use case test', () => {
+describe('listGlobalDepensesOfYear.spec', () => {
 
         it('lis with one value', async () => {
 
@@ -13,7 +13,7 @@ describe('list db years use case test', () => {
                 }
             }
 
-            const res = await utilsUseCases.listGlobalTurnoverOfYear(request);
+            const res = await utilsUseCases.listGlobalDepensesOfYear(request);
 
             debugger
 

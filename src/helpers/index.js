@@ -102,7 +102,7 @@ async function executeSqlrequest({con, sql, values}){
 function sanitizeStringForSqlDb(table){
     debugger
     const res = table.map((element) => {           
-        return `'${'\\"'+element.nom_societe+'\\"'}'`
+        return `${'\\"'+element.nom_societe.replace("'", "\\'")+'\\"'}`
     });
 
     return res.join(',');

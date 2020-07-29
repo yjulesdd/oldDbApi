@@ -14,9 +14,8 @@ export default function utilsDa({connection, buildSqlRequest = null, executeSqlr
     }
 
     async function findGlobalTurnoverOfYear(request){
-
-        debugger
-        let sql = `CALL getTotalChiffreAffaire("${request.filters.where.idsociete}", ${request.filters.where.year})`;
+   
+        let sql = `CALL getTotalChiffreAffaire('${request.filters.where.idsociete}', ${request.filters.where.year})`;
         const con = await connection();
         const res = await executeSqlrequest({con ,sql});
         
@@ -26,10 +25,9 @@ export default function utilsDa({connection, buildSqlRequest = null, executeSqlr
 
     async function findTurnoverOfYearByCompany(request){
 
-        const values = request.filters.where.idsociete.join(',');
-        let sql = `CALL getChiffreAffaireByCompagny(?,?)`;
+        let sql = `CALL getChiffreAffaireByCompagny('${request.filters.where.idsociete}', ${request.filters.where.year})`;
         const con = await connection();
-        const res = await executeSqlrequest({con ,sql, values });
+        const res = await executeSqlrequest({con ,sql});
         
         return res[0];
        
@@ -37,10 +35,9 @@ export default function utilsDa({connection, buildSqlRequest = null, executeSqlr
 
     async function findGlobalDepensesOfYear(request){
 
-        const values = request.filters.where.idsociete.join(',');
-        let sql = `CALL getTotalDepenses(?,?)`;
+        let sql = `CALL getTotalDepenses('${request.filters.where.idsociete}', ${request.filters.where.year})`;
         const con = await connection();
-        const res = await executeSqlrequest({con ,sql, values });
+        const res = await executeSqlrequest({con ,sql});
         
         return res[0];
        
@@ -48,10 +45,9 @@ export default function utilsDa({connection, buildSqlRequest = null, executeSqlr
 
     async function findDepensesOfYearByCompany(request){
 
-        const values = request.filters.where.idsociete.join(',');
-        let sql = `CALL getTotalDepenses(?,?)`;
+        let sql = `CALL getDepensesByCompany('${request.filters.where.idsociete}', ${request.filters.where.year})`;
         const con = await connection();
-        const res = await executeSqlrequest({con ,sql, values });
+        const res = await executeSqlrequest({con ,sql});
         
         return res[0];
        

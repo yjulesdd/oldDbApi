@@ -34,11 +34,11 @@ const getGloablDepensesOfYear = {
 
 }
 
-const getTurnoverOfYearByComapny = {
-    name: "getTurnoverOfYearByComapny",
+const getTurnoverOfYearByCompany = {
+    name: "getTurnoverOfYearByCompany",
     method: "get",
     link:"/get-turnover-of-year-by-company",
-    controller: utilsControllers.getTurnoverOfYearByComapnyController,
+    controller: utilsControllers.getTurnoverOfYearByCompanyController,
     params:{},
     accessRightLevel: ['ADMIN', 'COMPTABILITE'],
     accessRightGroups: []
@@ -64,7 +64,7 @@ const utilsRouter = {
        getUserYears,
        getDepensesOfYearByCompany,
        getGloablDepensesOfYear,
-       getTurnoverOfYearByComapny,
+       getTurnoverOfYearByCompany,
        getGlobalTurnoverOfYear
 
     ]

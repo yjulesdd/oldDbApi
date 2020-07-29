@@ -19,7 +19,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/test/use-cases/utilsUseCases/*.spec.js"
+                "${workspaceFolder}/test/controllers/utilsControllers/*.spec.js"
             ],
             // "console": "integratedTerminal",
             "internalConsoleOptions": "openOnSessionStart",

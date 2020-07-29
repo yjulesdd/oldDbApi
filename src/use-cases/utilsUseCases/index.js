@@ -11,9 +11,9 @@ import {sanitizeStringForSqlDb} from '../../helpers';
 
 const listDbYears = makeListDbYears({utilsDataAccess});
 const listGlobalTurnoverOfYear = makeListGlobalTurnoverOfYear({utilsDataAccess, listCompanies, sanitizeStringForSqlDb})
-const listGlobalDepensesOfYear = makeListGlobalDepensesOfYear({utilsDataAccess});
-const listDepensesOfYearByCompany = makeListDepensesOfYearByCompany({utilsDataAccess});
-const listTurnoverOfYearByComapny = makeListTurnoverOfYearByCompany({utilsDataAccess});
+const listGlobalDepensesOfYear = makeListGlobalDepensesOfYear({utilsDataAccess, listCompanies, sanitizeStringForSqlDb});
+const listDepensesOfYearByCompany = makeListDepensesOfYearByCompany({utilsDataAccess, listCompanies, sanitizeStringForSqlDb});
+const listTurnoverOfYearByCompany = makeListTurnoverOfYearByCompany({utilsDataAccess, listCompanies, sanitizeStringForSqlDb});
 
 
 
@@ -21,7 +21,7 @@ const listTurnoverOfYearByComapny = makeListTurnoverOfYearByCompany({utilsDataAc
 const utilsUseCases = Object.freeze({
     listDbYears,
     listDepensesOfYearByCompany,
-    listTurnoverOfYearByComapny,
+    listTurnoverOfYearByCompany,
     listGlobalDepensesOfYear,
     listGlobalTurnoverOfYear
 });
@@ -32,7 +32,7 @@ export default {
 export { 
     listDbYears , 
     listDepensesOfYearByCompany, 
-    listTurnoverOfYearByComapny,
+    listTurnoverOfYearByCompany,
     listGlobalDepensesOfYear,
     listGlobalTurnoverOfYear
 }

@@ -1,6 +1,6 @@
 import { sanitizeStringForSqlDb } from "../../helpers";
 
-export default function makeListGlobalTurnoverOfYear({ utilsDataAccess , listCompanies, Helpers}){
+export default function makeListGlobalTurnoverOfYear({ utilsDataAccess , listCompanies, sanitizeStringForSqlDb}){
     return async function listGlobalTurnoverOfYear({fields = [], filters = null}){
 
         if(!filters){
@@ -13,6 +13,8 @@ export default function makeListGlobalTurnoverOfYear({ utilsDataAccess , listCom
 
         const companies = await listCompanies({fields: ['nom_societe'] , filters:{ where:{ idsociete : filters.where.idsociete } }});
         filters.where.idsociete = sanitizeStringForSqlDb(companies);
+
+        debugger
 
         const res = await utilsDataAccess.findGlobalTurnoverOfYear({fields, filters});
 

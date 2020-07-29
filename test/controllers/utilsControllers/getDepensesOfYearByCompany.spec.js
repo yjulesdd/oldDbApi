@@ -1,8 +1,8 @@
 import { utilsControllers } from '../../../src/controllers';
 
-describe('get db years controller', () => {
+describe('getDepensesOfYearByCompany.spec', () => {
 
-    it('getGlobalTurnoverOfYear.spec', async () => {
+    it('get with one value', async () => {
 
         const req = {
             body:{
@@ -18,7 +18,7 @@ describe('get db years controller', () => {
             }
         }
 
-        const res = await utilsControllers.getGlobalTurnoverOfYearController(req);
+        const res = await utilsControllers.getDepensesOfYearByCompanyController(req);
         debugger
     })
 })

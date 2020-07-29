@@ -1,4 +1,4 @@
-export default function makeListGlobalDepensesOfYear({ utilsDataAccess }){
+export default function makeListGlobalDepensesOfYear({ utilsDataAccess, listCompanies, sanitizeStringForSqlDb }){
     return async function listGlobalDepensesOfYear({fields = [], filters = null}){
 
         if(!filters){
@@ -9,7 +9,10 @@ export default function makeListGlobalDepensesOfYear({ utilsDataAccess }){
             throw new Error('You must supply an idsociete');
         }
 
-        const res = await utilsDataAccess.findDbYears({fields, filters});
+        const companies = await listCompanies({fields: ['nom_societe'] , filters:{ where:{ idsociete : filters.where.idsociete } }});
+        filters.where.idsociete = sanitizeStringForSqlDb(companies);
+
+        const res = await utilsDataAccess.findGlobalDepensesOfYear({fields, filters});
 
         return res;
 
