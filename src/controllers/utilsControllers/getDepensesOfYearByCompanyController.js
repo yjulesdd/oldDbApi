@@ -19,7 +19,7 @@ export default function makeGetDepensesOfYearByCompanyController({ listDepensesO
                 societes = foundCompanyIdAuthorized({user, filters});
                 filters.where.idsociete = societes;
             }else{
-                filters.where = {};
+                // filters.where = {};
                 filters.where.idsociete = user.idsociete;
             }
     

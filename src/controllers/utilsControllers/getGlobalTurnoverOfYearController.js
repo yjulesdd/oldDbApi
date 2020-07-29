@@ -19,7 +19,7 @@ export default function makeGetGlobalTurnoverOfYearController({ listGlobalTurnov
                 societes = foundCompanyIdAuthorized({user, filters});
                 filters.where.idsociete = societes;
             }else{
-                filters.where = {};
+                // filters.where = {};
                 filters.where.idsociete = user.idsociete;
             }
     
